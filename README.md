@@ -1,5 +1,5 @@
 # Recommend-app-39
-App Name Travello , Module name Intern
+App Name Django , Module name Blog
 
 
 create a virtual environment:  mkvirtualenv test
