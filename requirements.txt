@@ -1,5 +1,5 @@
 beautifulsoup4==4.9.1
-mongo==0.2.0
+mongo==4.2.7
 pymongo==3.10.1
 tqdm==4.41.1
 Django==3.0.7
