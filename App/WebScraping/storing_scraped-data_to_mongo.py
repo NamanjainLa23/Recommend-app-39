@@ -47,11 +47,6 @@ for i in range(count):
         mydict1 = {"url": l2[i], "heading": l1[i]}
         mydict2 = {"url": l2[i], "heading": l1[i],
                    "votes": l3[i], "user": l4[i]}
-#
+
         x = mycol1.insert_one(mydict1)
         y = mycol2.insert_one(mydict2)
-#
-#    #    print(l1[i])
-#    #    print(l2[i])
-#    #    print(l3[i])
-    #     print(l4[i])
