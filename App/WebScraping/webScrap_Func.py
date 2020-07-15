@@ -38,6 +38,10 @@ for tr in soup.find_all('tr', class_='athing'):
     heading = tag.a.text
     url = tag.a['href']
 
+    if url.endswith('pdf'):  # if non scrapable file found
+        l1.append("1")
+        continue
+
     k = urlsetter(url)
 
     l1.append(k)
@@ -53,6 +57,10 @@ for td in soup.find_all('td', class_='subtext'):
 
 # adding/updating data
 for i in range(count):
+    if l1[i] == "1":
+        print("Non scrapable file found")
+        continue
+
     x = mycol1.find_one({"url": l1[i]})
     if x:
         update_votes(l1[i], l3[i])
