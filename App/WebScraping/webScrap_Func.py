@@ -40,6 +40,14 @@ for tr in soup.find_all('tr', class_='athing'):
 
     if url.endswith('pdf'):  # if non scrapable file found
         l1.append("1")
+        l2.append(heading)
+        count = count + 1
+        continue
+
+    if "youtube" in url:   # video element non scrapable
+        l1.append("1")
+        l2.append(heading)
+        count = count + 1
         continue
 
     k = urlsetter(url)
@@ -65,8 +73,6 @@ for i in range(count):
     if x:
         update_votes(l1[i], l3[i])
     else:
-        print(l1[i])
-        print()
         mydict1 = {"url": l1[i], "heading": l2[i]}
         mydict2 = {"url": l1[i], "heading": l2[i],
                    "votes": l3[i], "user": l4[i]}
