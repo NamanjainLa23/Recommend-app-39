@@ -43,7 +43,7 @@ for i in mycol3.find({}, {"_id": 0, "desc": 1}):
 
         total_words = word_Counter(filtered_sentence)
 
-        # print(filtered_sentence)
+        print(filtered_sentence)
         print(total_words)
         print()
         print("===============================================================")
