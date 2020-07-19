@@ -24,17 +24,9 @@ def word_Counter(s):
 stop_words = set(stopwords.words('english'))
 
 for i in mycol3.find({}, {"_id": 0, "desc": 1}):
-
-    # i = mycol3.find_one(
-    #    {"url": "https://www.coindesk.com/hackers-take-over-prominent-crypto-twitter-accounts-in-simultaneous-attack"}, {"_id": 0, "desc": 1})
-
     for desc in i.values():
+
         desc1 = re.sub(r'\n', ' ', desc)
-        #desc2 = re.sub(r'\s+', ' ', desc1)
-        #desc2 = re.sub(r'â', "'", desc1)
-        #desc3 = re.sub(r'â', "'", desc2)
-        #desc4 = re.sub(r'â¢', ".", desc3)
-        #desc5 = re.sub(r'\[[0-9]*\]', '', desc4)
         final_desc = re.sub(r'[^a-zA-Z ]', '', desc1)
 
         word_tokens = word_tokenize(final_desc)
@@ -43,8 +35,23 @@ for i in mycol3.find({}, {"_id": 0, "desc": 1}):
 
         total_words = word_Counter(filtered_sentence)
 
-        print(filtered_sentence)
-        print(total_words)
-        print()
-        print("===============================================================")
-        print()
+        for u in mycol3.find({"desc": desc}, {"_id": 0, "url": 1}):
+            for url in u.values():
+                print(url)
+                print()
+                print("===============================================================")
+                print()
+
+                x = mycol4.find_one({"url": url})
+                if x:
+                    print("skipped")
+                    continue
+                else:
+                    print(desc)
+                    mydict4 = {"url": url, "desc": final_desc,
+                               "counter": total_words}
+                    x = mycol4.insert_one(mydict4)
+
+        # print(final_desc)    #description in paragraph
+        # print(filtered_sentence)   # description words in a list
+        # print(total_words)   # word counter

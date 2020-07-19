@@ -21,6 +21,9 @@ for link in desc_link:
             for p in soup.find_all('p'):
                 desc = desc + " " + p.text
 
+            #for pre in soup.find_all('pre'):
+            #    desc = desc + " " + pre.text
+
         except:
             print("Network Error")
 
